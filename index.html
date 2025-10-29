@@ -1,79 +1,102 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
 <html lang="es">
+<!-- Etiqueta raíz del documento, indica que el idioma es español -->
 <head>
+    <!-- Cabecera del documento - contiene metadatos y recursos -->
     <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres como UTF-8 (soporta caracteres especiales) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura la vista para dispositivos móviles -->
     <title>Banco Unemi - Cajero Inteligente</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+    
     <style>
-        /* Estilos básicos y profesionales */
+        /* 
+        SECCIÓN DE ESTILOS CSS
+        Aquí definimos cómo se verá nuestra página
+        */
+        
+        /* Reset básico: elimina márgenes y padding por defecto de todos los elementos */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            box-sizing: border-box; /* Hace que el padding y border se incluyan en el ancho/alto */
+            font-family: 'Segoe UI', Arial, sans-serif; /* Define la familia de fuentes */
         }
 
+        /* Estilos para el cuerpo de la página */
         body {
             background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            min-height: 100vh;
+            /* Fondo con degradado azul */
+            min-height: 100vh; /* Altura mínima = 100% del viewport (pantalla visible) */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            padding: 20px; /* Espacio interno de 20px alrededor */
         }
 
+        /* Contenedor principal que envuelve todo el contenido */
         .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            width: 100%;
-            overflow: hidden;
+            background: white; /* Fondo blanco */
+            border-radius: 12px; /* Esquinas redondeadas */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra exterior */
+            max-width: 800px; /* Ancho máximo */
+            width: 100%; /* Ocupa el 100% del espacio disponible hasta 800px */
+            overflow: hidden; /* Oculta contenido que se salga del contenedor */
         }
 
+        /* Encabezado de la aplicación */
         .header {
             background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            color: white;
-            padding: 24px;
-            text-align: center;
+            color: white; /* Texto blanco */
+            padding: 24px; /* Espacio interno */
+            text-align: center; /* Texto centrado */
         }
 
+        /* Título principal */
         .header h1 {
-            font-size: 1.8em;
-            margin-bottom: 8px;
+            font-size: 1.8em; /* Tamaño de fuente */
+            margin-bottom: 8px; /* Espacio inferior */
         }
 
+        /* Subtítulo */
         .header p {
-            opacity: 0.9;
-            font-size: 0.9em;
+            opacity: 0.9; /* Ligera transparencia */
+            font-size: 0.9em; /* Tamaño de fuente más pequeño */
         }
 
+        /* Contenido principal */
         .content {
-            padding: 24px;
+            padding: 24px; /* Espacio interno */
         }
 
+        /* Panel que muestra el saldo */
         .saldo-panel {
-            background: #f8f9fa;
+            background: #f8f9fa; /* Fondo gris claro */
             padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-            text-align: center;
-            border: 1px solid #e9ecef;
+            border-radius: 8px; /* Esquinas redondeadas */
+            margin-bottom: 24px; /* Espacio inferior */
+            text-align: center; /* Texto centrado */
+            border: 1px solid #e9ecef; /* Borde sutil */
         }
 
+        /* Título del panel de saldo */
         .saldo-panel h2 {
-            color: #495057;
+            color: #495057; /* Color de texto gris oscuro */
             margin-bottom: 12px;
             font-size: 1.2em;
         }
 
+        /* Cantidad del saldo */
         .saldo-amount {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #1a237e;
+            font-size: 2.5em; /* Texto muy grande */
+            font-weight: 700; /* Texto en negrita */
+            color: #1a237e; /* Color azul */
             margin-bottom: 16px;
         }
 
+        /* Panel para ingresar datos */
         .input-panel {
             background: white;
             padding: 20px;
@@ -82,63 +105,73 @@
             margin-bottom: 24px;
         }
 
+        /* Grupo de elementos del formulario */
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 16px; /* Espacio entre grupos */
         }
 
+        /* Etiquetas de los campos */
         label {
-            display: block;
+            display: block; /* Ocupa toda la línea */
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 600; /* Texto seminegrita */
             color: #495057;
         }
 
+        /* Campos de entrada */
         input {
-            width: 100%;
+            width: 100%; /* Ocupa todo el ancho disponible */
             padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
+            border: 1px solid #ced4da; /* Borde gris */
+            border-radius: 6px; /* Esquinas redondeadas */
             font-size: 1em;
         }
 
+        /* Estilo cuando el campo está enfocado (seleccionado) */
         input:focus {
-            outline: none;
-            border-color: #1a237e;
-            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+            outline: none; /* Elimina el contorno por defecto */
+            border-color: #1a237e; /* Borde azul */
+            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2); /* Sombra azul sutil */
         }
 
+        /* Contenedor de botones de operación */
         .operation-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            display: grid; /* Usa CSS Grid para diseño */
+            grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+            gap: 12px; /* Espacio entre columnas */
             margin-top: 20px;
         }
 
+        /* Estilo base para botones */
         .btn {
             padding: 14px;
-            border: none;
+            border: none; /* Sin borde */
             border-radius: 6px;
             font-size: 1em;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+            transition: all 0.3s ease; /* Transición suave para efectos */
         }
 
+        /* Efecto al pasar el mouse sobre botones */
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px); /* Se eleva ligeramente */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
         }
 
+        /* Botón de éxito (depósito) */
         .btn-success {
-            background: #2e7d32;
+            background: #2e7d32; /* Verde */
             color: white;
         }
 
+        /* Botón de peligro (retiro) */
         .btn-danger {
-            background: #c62828;
+            background: #c62828; /* Rojo */
             color: white;
         }
 
+        /* Panel de estadísticas */
         .stats-panel {
             background: white;
             padding: 20px;
@@ -147,31 +180,36 @@
             margin-bottom: 24px;
         }
 
+        /* Grid para organizar las estadísticas */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+            gap: 16px; /* Espacio entre elementos */
         }
 
+        /* Tarjeta individual de estadística */
         .stat-card {
             text-align: center;
             padding: 16px;
-            background: #f8f9fa;
+            background: #f8f9fa; /* Fondo gris claro */
             border-radius: 6px;
         }
 
+        /* Título de la estadística */
         .stat-card h4 {
-            color: #6c757d;
+            color: #6c757d; /* Color gris */
             font-size: 0.9em;
             margin-bottom: 8px;
         }
 
+        /* Valor de la estadística */
         .stat-value {
             font-size: 1.4em;
             font-weight: 700;
             color: #1a237e;
         }
 
+        /* Panel de transacciones */
         .transactions-panel {
             background: white;
             padding: 20px;
@@ -179,112 +217,137 @@
             border: 1px solid #e9ecef;
         }
 
+        /* Título del panel de transacciones */
         .transactions-panel h3 {
             margin-bottom: 16px;
             color: #495057;
         }
 
+        /* Lista de transacciones con scroll */
         .transactions-list {
-            max-height: 300px;
-            overflow-y: auto;
+            max-height: 300px; /* Altura máxima */
+            overflow-y: auto; /* Scroll vertical si es necesario */
         }
 
+        /* Elemento individual de transacción */
         .transaction-item {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Espacio entre elementos */
             align-items: center;
             padding: 12px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef; /* Línea divisoria */
         }
 
+        /* Elimina la línea del último elemento */
         .transaction-item:last-child {
             border-bottom: none;
         }
 
+        /* Tipo de transacción */
         .transaction-type {
             font-weight: 600;
         }
 
+        /* Color para transacciones de depósito */
         .transaction-deposito {
-            color: #2e7d32;
+            color: #2e7d32; /* Verde */
         }
 
+        /* Color para transacciones de retiro */
         .transaction-retiro {
-            color: #c62828;
+            color: #c62828; /* Rojo */
         }
 
+        /* Monto de la transacción */
         .transaction-amount {
             font-weight: 700;
         }
 
+        /* Estado cuando no hay transacciones */
         .empty-state {
             text-align: center;
             padding: 40px 20px;
-            color: #6c757d;
+            color: #6c757d; /* Color gris */
         }
 
+        /* Sistema de alertas */
         .alert {
             padding: 12px 16px;
             border-radius: 6px;
             margin-bottom: 16px;
             font-weight: 600;
-            display: none;
+            display: none; /* Oculto por defecto */
         }
 
+        /* Alerta de error */
         .alert-error {
-            background: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #c62828;
+            background: #ffebee; /* Fondo rojo claro */
+            color: #c62828; /* Texto rojo */
+            border-left: 4px solid #c62828; /* Borde izquierdo rojo */
         }
 
+        /* Alerta de éxito */
         .alert-success {
-            background: #e8f5e8;
-            color: #2e7d32;
-            border-left: 4px solid #2e7d32;
+            background: #e8f5e8; /* Fondo verde claro */
+            color: #2e7d32; /* Texto verde */
+            border-left: 4px solid #2e7d32; /* Borde izquierdo verde */
         }
 
+        /* Pie de página */
         .footer {
-            background: #1a237e;
+            background: #1a237e; /* Fondo azul */
             color: white;
             padding: 16px;
             text-align: center;
             font-size: 0.9em;
         }
 
+        /* Media query para dispositivos móviles (pantallas menores a 600px) */
         @media (max-width: 600px) {
+            /* En móviles, las estadísticas se apilan verticalmente */
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Una columna */
             }
             
+            /* Los botones también se apilan verticalmente */
             .operation-buttons {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Una columna */
             }
         }
     </style>
 </head>
+
 <body>
+    <!-- CUERPO DEL DOCUMENTO - Lo que el usuario ve -->
+    
     <div class="container">
-        <!-- Header -->
+        <!-- Header con nombre del banco -->
         <div class="header">
             <h1>Banco Unemi</h1>
             <p>Sistema de Cajero Inteligente</p>
         </div>
 
         <div class="content">
-            <!-- Sistema de alertas -->
+            <!-- Sistema de alertas (inicialmente vacío y oculto) -->
             <div id="alert" class="alert"></div>
 
-            <!-- Panel de saldo -->
+            <!-- Panel que muestra el saldo actual -->
             <div class="saldo-panel">
                 <h2>Saldo Disponible</h2>
                 <div class="saldo-amount" id="saldoActual">$0.00</div>
             </div>
 
-            <!-- Panel de operaciones -->
+            <!-- Panel para realizar operaciones -->
             <div class="input-panel">
                 <div class="form-group">
                     <label for="monto">Monto de la Operación</label>
                     <input type="number" id="monto" placeholder="0.00" min="0" step="0.01">
+                    <!-- 
+                      type="number" - Solo permite números
+                      placeholder="0.00" - Texto de ejemplo
+                      min="0" - Valor mínimo permitido
+                      step="0.01" - Incrementos de centavos
+                    -->
                 </div>
                 
                 <div class="form-group">
@@ -292,9 +355,13 @@
                     <input type="text" id="concepto" placeholder="Descripción de la operación">
                 </div>
 
+                <!-- Botones para realizar operaciones -->
                 <div class="operation-buttons">
                     <button class="btn btn-success" onclick="realizarDeposito()">Realizar Depósito</button>
                     <button class="btn btn-danger" onclick="realizarRetiro()">Realizar Retiro</button>
+                    <!-- 
+                      onclick - Ejecuta función JavaScript al hacer clic
+                    -->
                 </div>
             </div>
 
@@ -322,6 +389,7 @@
             <div class="transactions-panel">
                 <h3>Historial de Transacciones</h3>
                 <div class="transactions-list" id="movimientosList">
+                    <!-- Estado inicial cuando no hay transacciones -->
                     <div class="empty-state">
                         <p>No hay transacciones registradas</p>
                         <p>Realice su primera operación para comenzar</p>
@@ -330,12 +398,19 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Pie de página -->
         <div class="footer">
             <p>© 2024 Cajero Bancario Inteligente. Sistema seguro certificado.</p>
         </div>
     </div>
+    
+    <!-- Incluye el archivo JavaScript externo -->
     <script src="script.js"></script>
-
+    <!-- 
+      Este archivo contiene las funciones:
+      - realizarDeposito()
+      - realizarRetiro()
+      - Y otras funciones necesarias para el funcionamiento
+    -->
 </body>
 </html>
